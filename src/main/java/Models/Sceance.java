@@ -15,6 +15,10 @@ public class Sceance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String nom;
+
+    String dureeDebut;
+    String dureeFin;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDateTime dateDebut;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
