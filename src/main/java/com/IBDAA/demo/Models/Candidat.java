@@ -1,4 +1,4 @@
-package Models;
+package com.IBDAA.demo.Models;
 
 import lombok.Data;
 

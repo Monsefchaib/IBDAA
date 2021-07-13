@@ -1,4 +1,4 @@
-package Models;
+package com.IBDAA.demo.Models;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class Formateur extends User{
 
-    @OneToMany(mappedBy = "sceance_formateur",cascade= CascadeType.ALL)
+    @OneToMany(mappedBy = "sceanceFormateur",cascade= CascadeType.ALL)
     List<Sceance> sceances;
 
 }
