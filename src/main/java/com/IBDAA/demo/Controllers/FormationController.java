@@ -1,7 +1,7 @@
 package com.IBDAA.demo.Controllers;
 
 import com.IBDAA.demo.Models.Formation;
-import  com.IBDAA.demo.Services.FormaionService;
+import com.IBDAA.demo.Services.FormationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/formation")
-public class FormaionController {
-    private final FormaionService service ;
+public class FormationController {
+    private final FormationService service ;
 
     @Autowired
-    public FormaionController(FormaionService service) {
+    public FormationController(FormationService service) {
         this.service = service;
     }
 

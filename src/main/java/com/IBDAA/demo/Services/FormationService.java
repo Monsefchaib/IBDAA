@@ -3,16 +3,18 @@ package com.IBDAA.demo.Services;
 import com.IBDAA.demo.Models.Formation;
 import com.IBDAA.demo.Repositorys.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 
-public class FormaionService {
+@Service
+public class FormationService {
     private final FormationRepository repository;
 
     @Autowired
-    public FormaionService(FormationRepository repository) {
+    public FormationService(FormationRepository repository) {
         this.repository = repository;
     }
 

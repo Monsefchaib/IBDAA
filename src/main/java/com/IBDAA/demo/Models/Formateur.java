@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Formateur extends User{
+public class Formateur extends Utilisateur {
 
     @OneToMany(mappedBy = "sceanceFormateur",cascade= CascadeType.ALL)
     List<Sceance> sceances;

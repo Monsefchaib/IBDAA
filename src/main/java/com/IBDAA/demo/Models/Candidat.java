@@ -5,9 +5,11 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
+@Table(name="CANDIDAT")
 public @Data
-class Candidat extends User{
+class Candidat extends Utilisateur {
 
     String type;
 
