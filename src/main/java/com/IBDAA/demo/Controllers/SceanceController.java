@@ -27,7 +27,7 @@ public class SceanceController {
     @DeleteMapping(path="{id}")
     public void removeSceance(@PathVariable("id") Long id){service.removeSceance(id);}
     @PutMapping(path="{id}")
-    public  void updateSceance(@PathVariable Long id,
+    public  void updateSceance(@PathVariable("id") Long id,
                                @RequestParam(required = false) String nom,
                                @RequestParam(required = false) LocalDateTime dateTimeDebut,
                                @RequestParam(required = false) LocalDateTime dateTimeFin,
