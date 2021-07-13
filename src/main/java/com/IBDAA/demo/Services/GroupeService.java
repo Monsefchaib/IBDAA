@@ -25,7 +25,6 @@ public class GroupeService {
     public Groupe getGroupById(Long id){
          return repository.findById(id)
                 .orElseThrow(()->new IllegalStateException("Group does not exist"));
-        //return group;
     }
     public void createGroup(Groupe group){
         repository.save(group);
@@ -43,6 +42,9 @@ public class GroupeService {
                 .orElseThrow(()->new IllegalStateException("Group does not exist"));
          if (gp.getCandidats() !=null){
              group.setCandidats(gp.getCandidats());
+         }
+         if(gp.getNom() != null && gp.getNom().length() > 0){
+             group.setNom(gp.getNom());
          }
     }
 }

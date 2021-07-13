@@ -24,6 +24,10 @@ public class SceanceController {
     public List<Sceance> getSceance(){return service.getSceances();}
     @PostMapping
     public void createSceance(@RequestBody Sceance sceance){service.createSceance(sceance);}
+    @GetMapping(path = "{id}")
+    public Sceance getSceanceById(@PathVariable("id") Long id){
+        return service.getSceanceById(id);
+    }
     @DeleteMapping(path="{id}")
     public void removeSceance(@PathVariable("id") Long id){service.removeSceance(id);}
     @PutMapping(path="{id}")

@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.swing.*;
 import java.util.List;
-
+@RestController
+@RequestMapping(path="api/v1/group")
 public class GroupeController {
     private final GroupeService service;
 

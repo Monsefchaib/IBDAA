@@ -15,7 +15,7 @@ public class Groupe {
     Long id;
     @OneToMany(mappedBy = "groupe",cascade= CascadeType.ALL)
     List<Candidat> candidats;
-
+    String nom;
     @OneToMany(mappedBy = "groupe", cascade = CascadeType.ALL)
     List<Sceance> sceances;
 }
