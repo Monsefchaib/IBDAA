@@ -1,4 +1,4 @@
-package Models;
+package com.IBDAA.demo.Models;
 
 
 import lombok.Data;
@@ -14,7 +14,7 @@ public class Formation {
     Long id;
     String nom;
     String type;
-    int duree;
+    Integer duree;
     String description;
     String etat;
 
