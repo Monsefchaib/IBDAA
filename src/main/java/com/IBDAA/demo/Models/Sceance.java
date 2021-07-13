@@ -15,13 +15,10 @@ public class Sceance {
     Long id;
     String nom;
 
-    String dureeDebut;
-    String dureeFin;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDateTime dateDebut;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDateTime dateFin;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime dateTimeDebut;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime dateTimeFin;
 
     @JoinColumn(name="SCEANCE_FORMATEUR")
     @ManyToOne
