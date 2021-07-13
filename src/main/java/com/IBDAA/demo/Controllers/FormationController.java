@@ -31,7 +31,7 @@ public class FormationController {
     }
     @PutMapping(path = "{formationId}")
     public void updateFormation(
-            @PathVariable Long formationId,
+            @PathVariable("formationId") Long formationId,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) Integer duration,
