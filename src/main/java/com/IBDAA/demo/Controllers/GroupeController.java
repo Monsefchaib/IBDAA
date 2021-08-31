@@ -2,12 +2,15 @@ package com.IBDAA.demo.Controllers;
 
 import com.IBDAA.demo.Models.Groupe;
 import com.IBDAA.demo.Services.GroupeService;
+import com.IBDAA.demo.Type.CustomGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.*;
 import java.util.List;
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping(path="api/v1/group")
 public class GroupeController {
     private final GroupeService service;
@@ -17,18 +20,24 @@ public class GroupeController {
         this.service = service;
     }
     @GetMapping
-    public List<Groupe> getGroups(){
-        return service.getGroups();
+    public List<Groupe> getGroups(@RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String description){
+        return service.getGroups(name,description);
+
     }
-    @GetMapping(path = "{groupId}")
+    @GetMapping(path="/name/{name}")
+    public Groupe GetGroupByName(@PathVariable("name") String name){return  service.GetGroupByName(name);}
+    @GetMapping(path = "/id/{groupId}")
     public Groupe getGroupById(@PathVariable("groupId") Long id){
         return service.getGroupById(id);
     }
-    @PostMapping
-    public void createGroup(Groupe group){
+    @PostMapping(
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public void createGroup(@RequestBody Groupe group){
         service.createGroup(group);
     }
-    @DeleteMapping(path = "{groupId}")
+    @DeleteMapping(path = "/{groupId}")
     public void removeGroup(@PathVariable("groupId") Long id){
         service.removeGroup(id);
     }
@@ -36,4 +45,8 @@ public class GroupeController {
     public void  updateGroup(@RequestBody() Groupe group){
         service.updateGroup(group);
     }
+    @GetMapping(path="/getgroups")
+    public List<CustomGroup> GetGroupsCandidats(){return service.GetGroupsCandidats();}
+    @GetMapping(path="/checkgroup/{groupname}")
+    public Boolean CheckGroup(@PathVariable("groupname") String name){return service.CheckGroup(name);}
 }

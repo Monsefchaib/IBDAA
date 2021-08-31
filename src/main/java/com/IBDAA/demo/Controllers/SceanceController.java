@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping(path = "api/v1/sceance")
 public class SceanceController {
     private final SceanceService service;

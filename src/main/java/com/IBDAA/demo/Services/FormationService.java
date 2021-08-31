@@ -31,6 +31,15 @@ public class FormationService {
         }
         repository.deleteById(id);
     }
+    public Formation GetformationByName(String name){
+        return repository.GetFormationByName(name);
+    }
+    public Boolean CheckFormation(String name){
+        if(repository.GetFormationByName(name) != null){
+            return true;
+        }
+        return false;
+    }
     @Transactional
     public void updateFormation(Long formationId,String name,String type,Integer duration,String desc,String status){
         Formation formation= repository.findById(formationId)
