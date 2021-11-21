@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping(path = "api/v1/formation")
 public class FormationController {
     private final FormationService service ;
@@ -39,6 +40,14 @@ public class FormationController {
             @RequestParam(required = false) String status
     ){
         service.updateFormation(formationId,name,type,duration,desc,status);
+    }
+    @GetMapping(path="/name/{name}")
+    public Formation GetformationByName(@PathVariable("name") String name){
+        return service.GetformationByName(name);
+    }
+    @GetMapping(path="/checkformation/{name}")
+    public Boolean CheckFormation(@PathVariable("name") String name){
+        return service.CheckFormation(name);
     }
 
 }

@@ -22,6 +22,10 @@ public class SceanceService {
 
     public List<Sceance> getSceances() { return repository.findAll();}
     public void createSceance(Sceance sceance) {repository.save(sceance);}
+    public Sceance getSceanceById(Long id){
+        return repository.findById(id)
+                .orElseThrow(()->new IllegalStateException("Seance does not exist"));
+    }
     public void removeSceance (Long id){
         boolean exist = repository.existsById(id);
         if(!exist){

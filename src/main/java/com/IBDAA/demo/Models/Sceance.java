@@ -1,6 +1,7 @@
 package com.IBDAA.demo.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,6 +29,7 @@ public class Sceance {
     @JoinColumn(name="SCEANCE_FORMATION")
     Formation formation;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "SCENACE_GROUPE")
     Groupe groupe;
