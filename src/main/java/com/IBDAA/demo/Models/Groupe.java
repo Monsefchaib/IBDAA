@@ -1,6 +1,8 @@
 package com.IBDAA.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
@@ -16,11 +18,15 @@ public class Groupe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "groupe",cascade= CascadeType.MERGE)
     List<Candidat> candidats;
     @Column(unique = true)
     String nom;
     String Description;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "groupe", cascade = CascadeType.MERGE)
     List<Sceance> sceances;
 }

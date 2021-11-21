@@ -27,6 +27,7 @@ public class GroupeService {
     public List<Groupe> getGroups(String name, String description){
         String n = name;
         String d = description;
+
         if(n == null && d == null){
             return repository.findAll();
         }

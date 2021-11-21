@@ -22,7 +22,7 @@ public class CandidatController {
     @GetMapping(path = "/name/{name}")
     public List<Candidat> getCadidatByName(@PathVariable("name") String name){return service.getCadidatByName(name);}
     @PostMapping
-    public void createCandidat(Candidat candidat){service.createCandidat(candidat);}
+    public void createCandidat(@RequestBody Candidat candidat){service.createCandidat(candidat);}
     @DeleteMapping(path="{id}")
     public void deleteCandidat(@PathVariable("id") Long id){
         service.removeCandidat(id);
