@@ -15,7 +15,7 @@ public class Formateur extends Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "secondParent")
     @OneToMany(mappedBy = "sceanceFormateur",cascade= CascadeType.ALL)
     List<Sceance> sceances;
 

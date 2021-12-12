@@ -82,7 +82,9 @@ public class GroupeService {
         if(gp.getDescription() != null && gp.getDescription().length() > 0){
             group.setDescription(gp.getDescription());
         }
-        List<Candidat> oldList = group.getCandidats();
+        group.setCandidats(gp.getCandidats());
+        group.setSceances(gp.getSceances());
+        /*List<Candidat> oldList = group.getCandidats();
         List<Candidat> newList = gp.getCandidats();
         List<Candidat> deletelist = oldList;
         List<Candidat> addList = oldList;
@@ -109,7 +111,7 @@ public class GroupeService {
             if(item.getGroupe().getId() == null){
                 candidatrepository.updatecandidatnewgroup(item.getId(), group.getId());
             }
-        }
+        }*/
     }
 
 }

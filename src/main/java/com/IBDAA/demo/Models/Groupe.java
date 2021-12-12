@@ -1,18 +1,18 @@
 package com.IBDAA.demo.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @Entity
-
-public class Groupe {
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+public class Groupe implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +20,13 @@ public class Groupe {
 
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "groupe",cascade= CascadeType.MERGE)
+    @OneToMany(mappedBy = "groupe")
     List<Candidat> candidats;
     @Column(unique = true)
     String nom;
     String Description;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "groupe", cascade = CascadeType.MERGE)
+    @JsonManagedReference(value = "firstParent")
+    @OneToMany(mappedBy = "groupe")
     List<Sceance> sceances;
 }
