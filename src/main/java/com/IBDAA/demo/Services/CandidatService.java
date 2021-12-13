@@ -21,6 +21,7 @@ public class CandidatService {
         return repository.findAll();
     }
     public void createCandidat(Candidat candidat){
+        System.out.print(candidat.toString());
         repository.save(candidat);
     }
     public void removeCandidat(long id){

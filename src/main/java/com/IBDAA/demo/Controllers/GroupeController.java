@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.swing.*;
 import java.util.List;
 @RestController
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RequestMapping(path="api/v1/group")
 public class GroupeController {
     private final GroupeService service;
@@ -41,7 +41,11 @@ public class GroupeController {
     public void removeGroup(@PathVariable("groupId") Long id){
         service.removeGroup(id);
     }
-    @PutMapping()
+    //@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    //@ResponseBody
+    @PutMapping(
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
     public void  updateGroup(@RequestBody() Groupe group){
         service.updateGroup(group);
     }
