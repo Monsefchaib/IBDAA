@@ -2,6 +2,7 @@ package com.IBDAA.demo.Models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,15 +18,14 @@ public class Sceance {
     Long id;
     String nom;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    String formateur;
+
+
+    @JsonFormat(pattern = "dd-MMM-yyyy HH:mm:ss")
     LocalDateTime dateTimeDebut;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "dd-MMM-yyyy HH:mm:ss")
     LocalDateTime dateTimeFin;
 
-    @JsonBackReference(value = "secondParent")
-    @JoinColumn(name="SCEANCE_FORMATEUR")
-    @ManyToOne
-    Formateur sceanceFormateur;
 
     @JsonBackReference(value = "thirdParent")
     @ManyToOne

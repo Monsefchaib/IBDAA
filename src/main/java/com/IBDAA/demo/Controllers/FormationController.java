@@ -1,6 +1,8 @@
 package com.IBDAA.demo.Controllers;
 
 import com.IBDAA.demo.Models.Formation;
+import com.IBDAA.demo.Models.Groupe;
+import com.IBDAA.demo.Models.Sceance;
 import com.IBDAA.demo.Services.FormationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,14 @@ public class FormationController {
     @GetMapping(path="/name/{name}")
     public Formation GetformationByName(@PathVariable("name") String name){
         return service.GetformationByName(name);
+    }
+    @GetMapping(path="/session/{id}")
+    public List<Sceance> GetformationSesions(@PathVariable("id") Long id){
+        return service.GetformationSesions(id);
+    }
+    @GetMapping(path="/gp/{id}")
+    public Groupe getgp(@PathVariable("id") Long id){
+        return service.getgp(id);
     }
     @GetMapping(path="/checkformation/{name}")
     public Boolean CheckFormation(@PathVariable("name") String name){

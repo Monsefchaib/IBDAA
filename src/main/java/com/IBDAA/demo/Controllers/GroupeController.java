@@ -37,9 +37,9 @@ public class GroupeController {
     public void createGroup(@RequestBody Groupe group){
         service.createGroup(group);
     }
-    @DeleteMapping(path = "/{groupId}")
-    public void removeGroup(@PathVariable("groupId") Long id){
-        service.removeGroup(id);
+    @DeleteMapping()
+    public void removeGroup(@RequestBody() Groupe group){
+        service.removeGroup(group);
     }
     //@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     //@ResponseBody

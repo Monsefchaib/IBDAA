@@ -57,12 +57,15 @@ public class GroupeService {
                 candidatrepository.updatecandidatnewgroup(item.getId(),group.getId());
             }
     }
-    public void removeGroup(Long id){
-        boolean exist = repository.existsById(id);
+    public void removeGroup(Groupe gp){
+        boolean exist = repository.existsById(gp.getId());
         if(!exist){
-            throw new IllegalStateException("the Group with the id " + id + " does not exist") ;
+            throw new IllegalStateException("the Group with the id " + gp.getId() + " does not exist") ;
         }
-        repository.deleteById(id);
+        for (Candidat item: gp.getCandidats()) {
+            candidatrepository.updatecandidatgroup(item.getId());
+        }
+        repository.delete(gp);
     }
     public List<CustomGroup> GetGroupsCandidats(){
         List<Groupe> grouplist = repository.findAll();
@@ -82,8 +85,13 @@ public class GroupeService {
         if(gp.getDescription() != null && gp.getDescription().length() > 0){
             group.setDescription(gp.getDescription());
         }
-        group.setCandidats(gp.getCandidats());
-        group.setSceances(gp.getSceances());
+        for (Candidat item: group.getCandidats()) {
+            candidatrepository.updatecandidatgroup(item.getId());
+        }
+        for (Candidat item: gp.getCandidats()) {
+            candidatrepository.updatecandidatnewgroup(item.getId(), group.getId());
+        }
+
         /*List<Candidat> oldList = group.getCandidats();
         List<Candidat> newList = gp.getCandidats();
         List<Candidat> deletelist = oldList;
