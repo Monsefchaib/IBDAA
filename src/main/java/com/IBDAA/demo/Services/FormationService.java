@@ -1,7 +1,12 @@
 package com.IBDAA.demo.Services;
 
+import com.IBDAA.demo.Models.Candidat;
 import com.IBDAA.demo.Models.Formation;
+import com.IBDAA.demo.Models.Groupe;
+import com.IBDAA.demo.Models.Sceance;
 import com.IBDAA.demo.Repositorys.FormationRepository;
+import com.IBDAA.demo.Repositorys.GroupeRepository;
+import com.IBDAA.demo.Repositorys.SceanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +17,28 @@ import java.util.Objects;
 @Service
 public class FormationService {
     private final FormationRepository repository;
+    private final SceanceRepository sceanceRepository;
+    private final GroupeRepository groupRepository;
 
     @Autowired
-    public FormationService(FormationRepository repository) {
+    public FormationService(FormationRepository repository , SceanceRepository sceanceRepository,  GroupeRepository groupRepository) {
         this.repository = repository;
+        this.sceanceRepository = sceanceRepository;
+        this.groupRepository = groupRepository;
     }
 
     public List<Formation> getFormation(){
         return repository.findAll();
     }
     public void createFormation(Formation formation){
-        repository.save(formation);
+
+       Formation f = repository.save(formation);
+        for (Sceance item:
+                formation.getFormationSceances()) {
+            item.setFormation(f);
+            sceanceRepository.save(item);
+        }
+
     }
     public void removeFormation(Long id){
         boolean exist = repository.existsById(id);
@@ -63,4 +79,12 @@ public class FormationService {
 
     }
 
+    public List<Sceance> GetformationSesions(Long id){
+        return this.sceanceRepository.getformationSession(id);
+
+    }
+    public Groupe getgp(Long id){
+        return this.sceanceRepository.findById(id).get().getGroupe();
+
+    }
 }

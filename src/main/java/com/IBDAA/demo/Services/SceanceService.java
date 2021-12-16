@@ -34,25 +34,7 @@ public class SceanceService {
         repository.deleteById(id);
     }
     @Transactional
-    public void updateSceance(Long id, String nom, LocalDateTime dateTimeDebut, LocalDateTime dateTimeFin, Formateur sceanceFormateur, Formation formation, Groupe groupe){
-        Sceance sceance = repository.findById(id).orElseThrow(()->new IllegalStateException("Sceance n'existe pas"));
-        if(nom != null && nom.length()>0 && !Objects.equals(formation.getNom(),nom)){
-            sceance.setNom(nom);
-        }
-        if(dateTimeDebut != null && !Objects.equals(sceance.getDateTimeDebut(),dateTimeDebut)){
-            sceance.setDateTimeDebut(dateTimeDebut);
-        }
-        if(dateTimeFin != null  && !Objects.equals(sceance.getDateTimeFin(),dateTimeFin)){
-            sceance.setDateTimeFin(dateTimeFin);
-        }
-        if(sceanceFormateur != null && !Objects.equals(sceance.getSceanceFormateur(),sceanceFormateur)){
-            sceance.setSceanceFormateur(sceanceFormateur);
-        }
-        if(formation != null  && !Objects.equals(sceance.getFormation(),formation)){
-            sceance.setFormation(formation);
-        }
-        if(groupe != null && !Objects.equals(sceance.getGroupe(),groupe)){
-            sceance.setGroupe(groupe);
-        }
+    public void updateSceance(Long id, String nom, LocalDateTime dateTimeDebut, LocalDateTime dateTimeFin, Formateur sceanceFormateur, Formation formation, Groupe groupe) {
+        Sceance sceance = repository.findById(id).orElseThrow(() -> new IllegalStateException("Sceance n'existe pas"));
     }
 }

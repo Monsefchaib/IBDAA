@@ -14,7 +14,9 @@ public interface CandidatRepository extends JpaRepository<Candidat,Long> {
 
     @Query("SELECT c FROM Candidat c WHERE c.groupe.id=:groupid")
     List<Candidat> getcandidatgroup(@Param("groupid") Long groupid);
-    @Query("UPDATE Candidat SET groupe=null WHERE id=:idcandidat")
+    @Transactional
+    @Modifying
+    @Query("UPDATE Candidat SET groupe.id=null WHERE id=:idcandidat")
     void updatecandidatgroup(@Param("idcandidat") Long idcandidat);
     @Transactional
     @Modifying
